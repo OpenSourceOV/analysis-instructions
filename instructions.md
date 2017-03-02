@@ -74,19 +74,11 @@
 
     This is important because we need the parameters to be accurate to more decimal places than can be seen in the regression equation on the scatter plot. Don't copy the values from the equation.
 
-    * For the slope use the **slope** function:
-
-        ```
-        =slope(x_values, y_values)
-        ```
+    * For the slope use the function **slope(x_values, y_values)**
         
         ![](./images/wp_slope.jpg)
 
-    * For the intercept use the **intercept** function:
-
-        ```
-        =intercept(x_values, y_values)
-        ```
+    * For the intercept use the function **intercept(x_values, y_values)**
 
         ![](./images/wp_intercept.jpg)
 
@@ -96,13 +88,13 @@
     The formula for each row will be:
 
     ```
-    =timestamp * regression slope + regression intercept
+    timestamp * regression slope + regression intercept
     ```
 
     For example, say we want to calculate the WP for the timestamp on column C row 2 and our slope for the linear regression is on a sheet called 'WP' in column D row 3 and the intercept on column E row 3 we would use the formula:
 
     ```
-    =C2*WP!$D$3+WP!$E$3
+    C2 * WP!$D$3 + WP!$E$3
     ```
     
     ![](./images/wp_formula.jpg)
@@ -121,7 +113,7 @@
     * The formula we want to apply is:
 
     ```
-    = (Cumulative Total / Max(Cumulative Totals)) * 100
+    Cumulative Total / Max(Cumulative Totals) * 100
     ```
 
     ![](./images/area_perc_c.jpg)
