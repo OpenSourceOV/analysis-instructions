@@ -9,7 +9,7 @@
 
 ## Instructions
 
-A completed [example.xls](./example.xls) can be downloaded and used for reference.
+A completed [example.xls](./example.xls) can be downloaded for reference.
 
 1. Follow the [Extracting Image Timestamps](#extracting-image-timestamps) instructions to generate a file that contains the timestamps for all the captured images.
 
