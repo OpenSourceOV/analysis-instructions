@@ -11,44 +11,52 @@
 
 1. Follow the [Extracting Image Timestamps](#extracting-image-timestamps) instructions to generate a file that contains the timestamps for all the captured images.
 
-2. Open the csv/Excel file containing the areas. If using the results file saved after following the [OpenSourceOV/image-processing-instructions](https://github.com/OpenSourceOV/image-processing-instructions) then it will have a number of columns. Remove all columns except 'Area'. The only thing that's important is that the rows match the order of the image sequence.
+2. Open the CSV/Excel file containing the areas. The file only needs to list the areas but the areas must be in the same order as the original image sequence. If using the results file from [OpenSourceOV/image-processing-instructions](https://github.com/OpenSourceOV/image-processing-instructions) then this will be in the correct order but will have a number of other columns that need to be removed.
+
+    The file should look something like this:
 
     ![](./images/excel_area.jpg)    
 
-3. Create an cumulative area total column using the following formulas:
+3. Create an cumulative area total column.
 
-    * Cell B2=A2
-    * Cell B3=A3+B2
+    * Set the formula for cell B2 to '=A2'
 
-    Copy cell B3 to the remaining rows (or drag or double-click the corner).
+        ![](./images/c_area_b2.jpg) 
 
-    ![](./images/c_area_b2.jpg) ![](./images/c_area_b3.jpg)
+    * Set the formula for cell B3 to '=A3+B2'
+
+        ![](./images/c_area_b3.jpg)
+
+    * Copy cell B3 to the remaining rows (copy, drag or double-click the corner).
+  
+        ![](./images/c_area_copy.jpg) 
     
-    ![](./images/c_area_copy.jpg) ![](./images/c_area.jpg) 
-
 
 4. Copy the timestamps from the timestamps.csv file into column C in the analysis spreadsheet.
 
-    * Open the timestamps.csv file
-    * Copy the values from the timestamps column
+    * Open the timestamps.csv file and copy the values from the timestamps column
+
+        ![](./images/copy_timestamps.jpg)
+
     * Paste into column C in the analysis spreadsheet
+    
+        ![](./images/paste_timestamp.jpg)
+    
     * Make sure the cells are in a datetime format
 
-    ![](./images/copy_timestamps.jpg)
+        ![](./images/cell_date_time.jpg)
 
-    ![](./images/paste_timestamp.jpg)
-    
-    ![](./images/cell_date_time.jpg)
-
-5. Create a new worksheet for the water potentials
+5. Create a new worksheet for the water potentials.
 
     ![](./images/new_wp_sheet.jpg)
 
-6. Add the measured water potentials and times into two separate columns. In this example we are using continuous measurements from a psychrometer but fewer points measured manually with a pressure bomb would also be analysed in the same way.
+6. Add the measured water potentials and times into two separate columns. 
+
+    In this example we have continuous measurements from a psychrometer but fewer points measured manually with a pressure bomb would also be fine and processed in the same way.
 
     ![](./images/wp.jpg)
 
-7. Ensure the times are in an excel date time format
+7. Ensure the timestamps are in a datetime format
     
     ![](./images/cell_date_time.jpg)
 
@@ -58,33 +66,32 @@
 
 9. Apply an appropriate regression.
 
-    For this data we can apply a linear regression. You may need to apply a non-linear regression or apply a linear regression in phases.
+    For this data we can apply a linear regression. Depending on your water potential data you may need to apply a non-linear regression, or apply a linear regression in phases.
 
     ![](./images/wp_linear_reg.jpg)
 
 10. Calculate each of the regression parameters in separate cells so we can reference them later.
 
-    This is important because we need the parameters accurate to more decimal places than can be seen in the regression equation on the scatter plot. Do not copy the values from the equation.
+    This is important because we need the parameters to be accurate to more decimal places than can be seen in the regression equation on the scatter plot. Don't copy the values from the equation.
 
-    For a linear regression:
+    * For the slope use the **slope** function:
 
-    * For the slope use the slope function:
+        ```
+        =slope(x_values, y_values)
+        ```
+        
+        ![](./images/wp_slope.jpg)
 
-    ```
-    =slope(x_values, y_values)
-    ```
+    * For the intercept use the **intercept** function:
 
-    * For the intercept use the intercept function:
+        ```
+        =intercept(x_values, y_values)
+        ```
 
-    ```
-    =intercept(x_values, y_values)
-    ```
-
-    ![](./images/wp_slope.jpg)
-    ![](./images/wp_intercept.jpg)
+        ![](./images/wp_intercept.jpg)
 
 
-11. Back on the first sheet in a new WP column use the regression parameters to calculate the water potential for each timestamp
+11. Back on the first sheet in a new column use the regression parameters to calculate the water potential for each timestamp.
 
     The formula for each row will be:
 
@@ -98,11 +105,9 @@
     =C2*WP!$D$3+WP!$E$3
     ```
     
-    Copy the formula to each row so we have a calculated WP for each timestamp.
-
     ![](./images/wp_formula.jpg)
 
-    Set the format of the column to a number:
+    Set the format of the cells to a number:
 
     ![](./images/wp_format_number.jpg)
 
@@ -111,7 +116,7 @@
     ![](./images/wp_calculated.jpg)
 
 
-12. We can now plot WP against the cumulative area but it would be easier to read and understand if we made the cumulative area relative to the total cumulative area. In this way we are representing percentage increase in embolism as a function of water potential.
+12. We can now plot WP against the cumulative area, but it would be easier to understand if we made the cumulative area relative to the total cumulative area. In this way we are representing percentage increase in embolism as a function of water potential.
 
     * The formula we want to apply is:
 
@@ -121,8 +126,7 @@
 
     ![](./images/area_perc_c.jpg)
 
-
-13. Plot relative cumulative area against water potential to create the final optical vulnerability curve.
+13. Plot the relative cumulative area against water potential to create the final optical vulnerability curve.
 
     ![](./images/wp_area_plot.jpg)
     
