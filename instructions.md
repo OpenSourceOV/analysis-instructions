@@ -9,6 +9,8 @@
 
 ## Instructions
 
+A completed [example.xls](./example.xls) can be downloaded and used for reference.
+
 1. Follow the [Extracting Image Timestamps](#extracting-image-timestamps) instructions to generate a file that contains the timestamps for all the captured images.
 
 2. Open the CSV/Excel file containing the areas. The file only needs to list the areas but the areas must be in the same order as the original image sequence. If using the results file from [OpenSourceOV/image-processing-instructions](https://github.com/OpenSourceOV/image-processing-instructions) then this will be in the correct order but will have a number of other columns that need to be removed.
