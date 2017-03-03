@@ -1,2 +1,3 @@
-[# Analysis Instructions](./instructions.md)
+# Analysis Instructions
 
+[Click here for the instructions](./instructions.md)
