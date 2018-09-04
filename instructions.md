@@ -170,6 +170,18 @@ The easiest way to extract the timestamps is via the Command Prompt on Windows.
     ```
     cd "C:\Data\Eucalpytus Obliqua\images"
     ```
+    
+    If the drive you are trying to access is a network drive then you need to change to the drive first. For example if the path is "R:\Data\Eucalyptus Obliqua\images" then you need to change to the R drive first:
+    
+    ```
+    R:
+    ```
+    
+    and then changing to the directory:
+    
+    ```
+    cd "R:\Data\Eucalpytus Obliqua\images"
+    ```
 
 5. Extract the timestamps and write them to a file using the 'dir' command:
 
